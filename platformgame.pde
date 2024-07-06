@@ -1,4 +1,7 @@
+boolean[] keysPressed = new boolean[128];
 Player p;
+
+
 
 void setup() {
   size(800, 500);
@@ -9,17 +12,18 @@ void draw() {
   background(250, 250, 250);
   fill(80, 30, 80);            // Legen die Farbe fest: Dunkelgrau 0-255
   rect(0, 450, 800, 30);       // rect(x, y, größe-x, größe-y);
-  image(p.image, p.box.x, p.box.y, p.box.w, p.box.h);
+  p.draw();
   
-  if (p.box.y + p.sy <= 370) p.box.y = p.box.y + p.sy;
-  p.sy = p.sy +1;
-  
+  p.setDirection(int(keysPressed['D']) - int(keysPressed['A']));
+  if (keysPressed['W']) p.jump();
+
+  p.move();
 }
 
 void keyPressed() {
-  if (key == 'd') p.box.x = p.box.x + 10;
-  else if (key == 'a') p.box.x = p.box.x - 10;
-  if (key == 'w' && p.box.y >= 362) {
-    p.sy = -15;
-  }
+  if (keyCode < 128) keysPressed[keyCode] = true;
+}
+
+void keyReleased() {
+  if (keyCode < 128) keysPressed[keyCode] = false;
 }
