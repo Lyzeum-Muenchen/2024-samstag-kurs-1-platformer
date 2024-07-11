@@ -4,6 +4,7 @@ class Player {
   float sy;        // Geschwindigkeit y-Richtung
   float sx;        // Geschwindigkeit x-Richtung
   float moveSpeed = 5;
+  float jumpPower = 20;
 
   Player() {
     image = loadImage("player.png"); // player.png = euer Bildname
@@ -21,7 +22,7 @@ class Player {
   
   boolean jump(){
     if (box.y >= 365){
-      sy = -10;
+      sy = -jumpPower;
       return true;
     }
     return false;

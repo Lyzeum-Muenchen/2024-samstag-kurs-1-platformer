@@ -1,4 +1,5 @@
 boolean[] keysPressed = new boolean[128];
+ArrayList<Platform> platforms = new ArrayList<Platform>();
 Player p;
 
 
@@ -6,12 +7,17 @@ Player p;
 void setup() {
   size(800, 500);
   p = new Player();
+  platforms.add(new Platform(200, 275, 100, 30, color(80, 30, 80)));
+  platforms.add(new Platform(0, 450, 800, 30, color(80, 80, 80)));
 }
 
 void draw() {
   background(250, 250, 250);
-  fill(80, 30, 80);            // Legen die Farbe fest: Dunkelgrau 0-255
-  rect(0, 450, 800, 30);       // rect(x, y, größe-x, größe-y);
+  
+  for (Platform platform : platforms){
+    platform.draw();
+  }
+  
   p.draw();
   
   p.setDirection(int(keysPressed['D']) - int(keysPressed['A']));
