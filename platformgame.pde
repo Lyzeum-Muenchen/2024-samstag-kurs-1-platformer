@@ -8,7 +8,7 @@ void setup() {
   size(800, 500);
   p = new Player();
   platforms.add(new Platform(200, 275, 100, 30, color(80, 30, 80)));
-  platforms.add(new Platform(0, 450, 800, 30, color(80, 80, 80)));
+  platforms.add(new Platform(0, 450, 800, 30, color(80, 30, 80)));
 }
 
 void draw() {
